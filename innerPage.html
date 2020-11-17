@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inner Page</title>
+    <style>
+        div {
+            margin-bottom: 10px;
+        }
+
+    </style>
+
+    <script>
+
+        function Log(row) {
+            document.getElementById('logPrint').innerHTML = document.getElementById('logPrint').innerHTML  + row + "<br>";
+        }
+    </script>
+</head>
+<body>
+
+<div>
+    <button onclick="Log('No selector')">No selector</button>
+</div>
+
+<div>
+    <button class="class-selector" onclick="Log('Class selector')">Class selector</button>
+</div>
+
+<div>
+    <button id="id-selector" onclick="Log('ID selector')">ID selector</button>
+</div>
+
+<div>
+    <button name="name-selector" onclick="Log('Name selector')">Name selector</button>
+</div>
+
+<ul>
+
+    <li>
+        <a href="index.html">Back no selector</a>
+    </li>
+    <li>
+        <a href="index.html" class="link">Back class selector</a>
+    </li>
+    <li>
+        <a href="index.html"  class="link">Back same class selector</a>
+    </li>
+    <li>
+        <a href="index.html" id="id-link">Back ID selector</a>
+    </li>
+</ul>
+
+<div id="logPrint"></div>
+
+</body>
+<script src="dal/dalIndexDb.js"></script>
+<script src="classes/DOMMapperService.js"></script>
+<script src="classes/DOMRecorderService.js"></script>
+<script src="classes/panel.js"></script>
+<script src="classes/controller.js"></script>
+<script src="classes/recordingsService.js"></script>
+<script src="models/action.js"></script>
+<script src="models/recording.js"></script>
+<script src="main.js"></script>
+</html>

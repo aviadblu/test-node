@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function someFunc() {
+
+        }
+    </script>
+</head>
+<body>
+<h1>Test page</h1>
+<div>
+    <form class="loginForm" action="innerPage.html">
+        <div>
+            <label>User Type</label>
+            <select name="userType">
+                <option value="admin">Admin</option>
+                <option value="regular">Regular</option>
+            </select>
+        </div>
+
+        <div>
+            <label>User Type 1</label>
+            <select name="userType2">
+                <option value="admin">Admin</option>
+                <option value="regular">Regular</option>
+            </select>
+        </div>
+
+        <div>
+            <input type="text" name="userName" placeholder="User name">
+        </div>
+        <div>
+            <input type="password" name="userPass" placeholder="User pass">
+        </div>
+        <div>
+        <textarea name="message" rows="10" cols="30" placeholder="Message"></textarea>
+        </div>
+        <div>
+            <input type="submit" value="Login 2">
+        </div>
+    </form>
+
+    <ul>
+
+        <li>
+            <a href="index.html">Back no selector</a>
+        </li>
+        <li>
+            <a href="index.html" class="link">Back class selector</a>
+        </li>
+        <li>
+            <a href="index.html"  class="link">Back same class selector</a>
+        </li>
+        <li>
+            <a href="index.html" id="id-link">Back ID selector</a>
+        </li>
+    </ul>
+
+</div>
+
+
+</body>
+<script src="dal/dalIndexDb.js"></script>
+<script src="classes/DOMMapperService.js"></script>
+<script src="classes/DOMRecorderService.js"></script>
+<script src="classes/panel.js"></script>
+<script src="classes/controller.js"></script>
+<script src="classes/recordingsService.js"></script>
+<script src="models/action.js"></script>
+<script src="models/recording.js"></script>
+<script src="main.js"></script>
+</html>
