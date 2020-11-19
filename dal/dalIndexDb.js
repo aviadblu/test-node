@@ -1,4 +1,5 @@
 const DB_NAME = "ActionsCacheDB";
+const DB_GLOBAL_OBJECT = "global";
 const DB_RECORDINGS_OBJECT = "recordings";
 const DB_ACTIONS_OBJECT = "actions";
 const DB_VERSION = 1;
@@ -24,17 +25,31 @@ class dalIndexDb {
         };
 
         request.onupgradeneeded = (event) => {
-            console.log("onupgradeneeded");
             this.db = event.target.result;
             let objectStore;
 
+            // build global store object
+            if (!this.db.objectStoreNames.contains(DB_GLOBAL_OBJECT)) {
+                objectStore = this.db.createObjectStore(
+                    DB_GLOBAL_OBJECT,
+                    {autoIncrement: true}
+                );
+                objectStore.createIndex('key', 'key', {unique: true});
+
+                objectStore.add({}, "state");
+            }
+
+            // build recording store object
             if (!this.db.objectStoreNames.contains(DB_RECORDINGS_OBJECT)) {
                 objectStore = this.db.createObjectStore(
                     DB_RECORDINGS_OBJECT,
-                    {keyPath: 'id'}
+                    {autoIncrement: true}
                 );
+
+                objectStore.createIndex('id', 'id', {unique: true});
             }
 
+            // build actions store object
             if (!this.db.objectStoreNames.contains(DB_ACTIONS_OBJECT)) {
                 objectStore = this.db.createObjectStore(
                     DB_ACTIONS_OBJECT,
@@ -55,6 +70,46 @@ class dalIndexDb {
                     resolve();
                 })
             }
+        });
+    }
+
+    getGlobalObject(key) {
+        return this.readyPromise().then(() => {
+            return new Promise((resolve, reject) => {
+                const transaction = this.db.transaction([DB_GLOBAL_OBJECT]);
+                const objectStore = transaction.objectStore(DB_GLOBAL_OBJECT);
+                const request = objectStore.get(key);
+
+                request.onsuccess = function (event) {
+                    if (request.result) {
+                        resolve(request.result);
+                    } else {
+                        reject('No data record');
+                    }
+                };
+
+                request.onerror = function (event) {
+                    reject(event);
+                };
+            });
+        });
+    }
+
+    updateGlobalObject(key, obj) {
+        return this.readyPromise().then(() => {
+            return new Promise((resolve, reject) => {
+                const request = this.db.transaction([DB_GLOBAL_OBJECT], 'readwrite')
+                    .objectStore(DB_GLOBAL_OBJECT)
+                    .put(obj, key);
+
+                request.onsuccess = function (event) {
+                    resolve();
+                };
+
+                request.onerror = function (event) {
+                    reject(event);
+                };
+            })
         });
     }
 
@@ -97,6 +152,7 @@ class dalIndexDb {
     addNewRecording(recording) {
         return this.readyPromise().then(() => {
             return new Promise((resolve, reject) => {
+                console.log(recording);
                 const request = this.db.transaction([DB_RECORDINGS_OBJECT], 'readwrite')
                     .objectStore(DB_RECORDINGS_OBJECT)
                     .add(recording);
@@ -113,12 +169,14 @@ class dalIndexDb {
     }
 
 
-    updateRecording(recording) {
+    updateRecording(recording, recordingId) {
+        console.log(recordingId);
+        console.log(recording);
         return this.readyPromise().then(() => {
             return new Promise((resolve, reject) => {
                 const request = this.db.transaction([DB_RECORDINGS_OBJECT], 'readwrite')
                     .objectStore(DB_RECORDINGS_OBJECT)
-                    .put(recording);
+                    .put(recording, recordingId);
 
                 request.onsuccess = function (event) {
                     resolve();

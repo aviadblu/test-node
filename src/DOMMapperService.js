@@ -1,10 +1,10 @@
 class DOMMapperService {
     constructor() {
-        this.LISTEN_DOM_EVENTS = [
-            "change", "click", "close",
-            "dbclick", "drag", "drop",
-            "input",
-            "keyup", "reset", "resize", "select"];
+        // this.LISTEN_DOM_EVENTS = [
+        //     "change", "click", "close",
+        //     "dbclick", "drag", "drop",
+        //     "input",
+        //     "keyup", "reset", "resize", "select"];
 
         this.ATTR_LIST = ["id", "name", "class", "type"];
 
@@ -88,7 +88,6 @@ class DOMMapperService {
                 }
             });
         }
-
 
         // text matching
         if (signature.txt !== "") {

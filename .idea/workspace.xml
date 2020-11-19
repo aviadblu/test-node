@@ -1,7 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d38ff739-a5ba-4eec-90bd-1279b0528714" name="Default Changelist" comment="" />
+    <list default="true" id="d38ff739-a5ba-4eec-90bd-1279b0528714" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/panelService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stateService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/DOMMapperService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/DOMMapperService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/DOMRecorderService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/DOMRecorderService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/panel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/recordingsService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/recordingsService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dal/dalIndexDb.js" beforeDir="false" afterPath="$PROJECT_DIR$/dal/dalIndexDb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/innerPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/innerPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,13 +54,15 @@
   <component name="ProjectId" id="1kPbX7uR9Ts7QXWeXzcIrPjQYZ5" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -38,7 +74,10 @@
       <recent name="C:\code\web-rpa" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.index.html">
+  <component name="RunManager" selected="JavaScript Debug.index.html (1)">
+    <configuration name="index.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/test-node/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/web-rpa/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -47,11 +86,13 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.index.html (1)" />
         <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="JavaScript Debug.test.html" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -63,13 +104,34 @@
       <option name="presentableId" value="Default" />
       <updated>1605605210662</updated>
       <workItem from="1605605211974" duration="18437000" />
+      <workItem from="1605685081625" duration="25000" />
+      <workItem from="1605685200896" duration="15486000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="959" y="435" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1605685090765">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="959" y="435" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1605685090765" />
+    <state x="1059" y="454" key="FileChooserDialogImpl" timestamp="1605685230340">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1059" y="454" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1605685230340" />
     <state x="519" y="127" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605633071574">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
