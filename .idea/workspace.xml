@@ -20,21 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d38ff739-a5ba-4eec-90bd-1279b0528714" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/panelService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/stateService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/playService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/DOMMapperService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/DOMMapperService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/DOMRecorderService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/DOMRecorderService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/panel.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/recordingsService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/recordingsService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dal/dalIndexDb.js" beforeDir="false" afterPath="$PROJECT_DIR$/dal/dalIndexDb.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/innerPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/innerPage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/recording.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/recording.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DOMRecorderService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/DOMRecorderService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/panelService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/panelService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recordingsService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/recordingsService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stateService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/stateService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/up-ac.js" beforeDir="false" afterPath="$PROJECT_DIR$/up-ac.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-player.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-player.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +93,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -106,18 +107,21 @@
       <workItem from="1605605211974" duration="18437000" />
       <workItem from="1605685081625" duration="25000" />
       <workItem from="1605685200896" duration="15486000" />
+      <workItem from="1605779187409" duration="16492000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -132,13 +136,13 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1059" y="454" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1605685230340" />
-    <state x="519" y="127" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605633071574">
+    <state x="519" y="127" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605790147024">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="519" y="127" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605633071574" />
-    <state x="646" y="236" width="627" height="568" key="find.popup" timestamp="1605633224962">
+    <state x="519" y="127" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605790147024" />
+    <state x="646" y="236" width="627" height="568" key="find.popup" timestamp="1605795028099">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="646" y="236" width="627" height="568" key="find.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605633224962" />
+    <state x="646" y="236" width="627" height="568" key="find.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605795028099" />
   </component>
 </project>

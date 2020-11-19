@@ -1,4 +1,3 @@
-
 // UI Path Advanced command Playground
 // logger json here:
 const json = [{

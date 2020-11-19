@@ -149,13 +149,13 @@ class dalIndexDb {
         });
     }
 
-    addNewRecording(recording) {
+    addNewRecording(recording, recordingId) {
         return this.readyPromise().then(() => {
             return new Promise((resolve, reject) => {
                 console.log(recording);
                 const request = this.db.transaction([DB_RECORDINGS_OBJECT], 'readwrite')
                     .objectStore(DB_RECORDINGS_OBJECT)
-                    .add(recording);
+                    .add(recording, recordingId);
 
                 request.onsuccess = function (event) {
                     resolve();
@@ -170,8 +170,6 @@ class dalIndexDb {
 
 
     updateRecording(recording, recordingId) {
-        console.log(recordingId);
-        console.log(recording);
         return this.readyPromise().then(() => {
             return new Promise((resolve, reject) => {
                 const request = this.db.transaction([DB_RECORDINGS_OBJECT], 'readwrite')
@@ -189,7 +187,7 @@ class dalIndexDb {
         });
     }
 
-    readActions() {
+    readActions(recordingId) {
         return this.readyPromise().then(() => {
             return new Promise((resolve, reject) => {
                 let response = [];
@@ -197,7 +195,8 @@ class dalIndexDb {
                 objectStore.openCursor().onsuccess = function (event) {
                     const cursor = event.target.result;
                     if (cursor) {
-                        response.push(cursor.value);
+                        if(cursor.value.recordingId === recordingId)
+                            response.push(cursor.value);
                         cursor.continue();
                     } else {
                         resolve(response);

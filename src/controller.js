@@ -1,91 +1,113 @@
 class controller {
-    #recordingId;
-    #recordingCounter = 0;
-    #recordingActive = false;
 
-    constructor(dal, recordingSvc, DOMRecorderSvc, stateSvc) {
+    constructor(dal, recordingSvc, DOMRecorderSvc, playSvc, stateSvc) {
         this.dal = dal;
         this.recordingSvc = recordingSvc;
         this.DOMRecorderSvc = DOMRecorderSvc;
+        this.playSvc = playSvc;
         this.stateSvc = stateSvc;
+
         this.DOMRecorderSvc.DelegateNewActionHandler(this.newActionHandler.bind(this));
         this.initRecordings();
+
+        this.playSvc.DelegatePlayedActionHandler(this.actionPlayedHandler.bind(this));
+
+        this.stateSvc.subscribe("recording", (newState) => {
+            // save in DB
+            this.syncRecordingStateToDB(newState.id, newState.status, newState.counter);
+        });
     }
 
     initRecordings() {
-        console.log("initRecordings");
         this.recordingSvc.getActiveRecording()
             .then(activeRecording => {
                 if (activeRecording) {
-                    this.#recordingId = activeRecording.id;
-                    this.#recordingCounter = activeRecording.actionsCounter;
-                    this.#recordingActive = true;
-                    this.updateRecordingStatus();
+                    this.updateRecordingState(activeRecording.id, 2, activeRecording.actionsCounter);
+                    this.DOMRecorderSvc.listen(document);
                 } else {
-                    this.#recordingId = null;
-                    this.#recordingCounter = 0;
-                    this.#recordingActive = false;
-                    this.updateRecordingStatus(false);
+                    this.updateRecordingState(null, 1, 0);
                 }
+
+                this.recordingSvc.getRecordingsFromDB()
+                    .then(recordings => {
+                        this.stateSvc.updateState("playing", {
+                            recordingList: recordings,
+                            status: 1,
+                            activeRecording: null,
+                            playCounter: 0
+                        });
+                    });
             });
     }
 
     startRecording() {
-        this.#recordingId = uuidv4();
-        this.#recordingActive = true;
-        this.updateRecordingStatus({
-            status: 2, // 0 not ready, 1 ready, 2 active recording
-            recordingId: this.#recordingId,
-            counter: 0,
-        });
-        this.initRecorder(this.#recordingId);
+        this.updateRecordingState(uuidv4(), 2, 0);
+        this.DOMRecorderSvc.listen(document);
     }
-
-    initRecorder(recordingId) {
-        this.dal.addNewRecording(createRecordingFromModel({id: this.recordingId}))
-            .then(() => {
-                this.DOMRecorderSvc.listen(document);
-            });
-    }
-
 
     newActionHandler(action) {
-        if (!this.#recordingActive)
+        if (!(this.stateSvc.state.recording.status === 2))
             return;
 
-        action.recordingId = this.recordingId;
+        action.recordingId = this.stateSvc.state.recording.id;
         this.dal.saveAction(action)
             .then(() => {
-                console.log("step recorded");
-                this.#recordingCounter++;
-                this.updateRecordingStatus({
-                    status: 2, // 0 not ready, 1 ready, 2 active recording
-                    recordingId: this.recordingId,
-                    counter: this.#recordingCounter,
-                });
+                this.updateRecordingState(this.stateSvc.state.recording.id, 2, this.stateSvc.state.recording.counter + 1);
+                console.log("action recorded", this.stateSvc.state.recording.counter);
             });
     }
 
     stopRecording() {
-        console.log("stopRecording");
-        this.#recordingActive = false;
-        this.updateRecordingStatus({
-            status: 1, // 0 not ready, 1 ready, 2 active recording
-            recordingId: this.recordingId,
-            counter: 0,
-        });
+        this.updateRecordingState(this.stateSvc.state.recording.id, 1, this.stateSvc.state.recording.counter);
+        this.updateRecordingState(null, 1, 0);
     }
 
-    updateRecordingStatus(dbSync = true) {
-        const recordingStatus = {
-            status: this.#recordingActive ? 2 : 1, // 0 not ready, 1 ready, 2 active recording
-            recordingId: this.#recordingId,
-            counter: this.#recordingCounter,
-        };
+    updateRecordingState(id, status, counter) {
+        const recordingStatus = deepClone({
+            id: id,
+            status: status, // 0 not ready, 1 ready, 2 active recording
+            counter: counter,
+        });
         this.stateSvc.updateState("recording", recordingStatus);
-        console.log(recordingStatus);
-        if(dbSync)
-            this.dal.updateRecording(recordingStatus, this.#recordingId);
+    }
+
+    syncRecordingStateToDB(id, status, counter) {
+        if (id) {
+            this.dal.updateRecording(createRecordingFromModel({
+                id: id,
+                status: status,
+                actionsCounter: counter
+            }), id)
+                .then(() => {
+
+                });
+        }
+    }
+
+    playRecording(recordingId) {
+        this.dal.readActions(recordingId)
+            .then(actions => {
+                this.stateSvc.updateState("playing", {
+                    recordingList: this.stateSvc.state.playing.recordingList,
+                    status: 2,
+                    activeRecording: recordingId,
+                    totalActionsInRecording: actions.length,
+                    playCounter: 0
+                });
+                this.playSvc.playRecording(actions);
+            });
+    }
+
+    actionPlayedHandler(action, actionsLeft) {
+        const recLength = this.stateSvc.state.playing.totalActionsInRecording;
+
+        this.stateSvc.updateState("playing", {
+            recordingList: this.stateSvc.state.playing.recordingList,
+            status: actionsLeft > -1 ? 2 : 1,
+            activeRecording: this.stateSvc.state.playing.activeRecording,
+            totalActionsInRecording: recLength,
+            playCounter: (recLength - actionsLeft)
+        });
     }
 
 }

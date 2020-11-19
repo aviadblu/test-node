@@ -14,3 +14,18 @@ function uuidv4() {
         return v.toString(16);
     });
 }
+
+
+function deepClone(obj) {
+    return JSON.parse(JSON.stringify(obj));
+}
+
+function formatTimestamp(timestamp) {
+    const options = {
+        year: 'numeric', month: 'numeric', day: 'numeric',
+        hour: 'numeric', minute: 'numeric',
+        hour12: false
+    };
+    const date = new Date(timestamp);
+    return new Intl.DateTimeFormat('en-GB', options).format(date)
+}

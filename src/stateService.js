@@ -1,9 +1,16 @@
 const emptyState = {
     mode: 0, // 0 not ready, 1 record, 2 play
     recording: {
-        status: 0, // 0 not ready, 1 ready, 2 active recording
-        recordingId: null,
+        status: 0, // 0 not ready, 1 inactive, 2 active recording
+        id: null,
         counter: 0,
+    },
+    playing: {
+        recordingList: null,
+        status: 0, // 0 not ready, 1 inactive, 2 active playing
+        activeRecording: null,
+        totalActionsInRecording: 0,
+        playCounter: 0
     }
 };
 
@@ -23,8 +30,7 @@ class stateService {
                 if (!stateData.hasOwnProperty("mode")) {
                     this.updateGlobalState(JSON.parse(JSON.stringify(emptyState)));
                     this.updateState("mode", 1);
-                }
-                else {
+                } else {
                     this.updateGlobalState(stateData);
                 }
             })

@@ -1,4 +1,3 @@
-
 async function Player(steps) {
     return new Promise(async (resolve, reject) => {
 

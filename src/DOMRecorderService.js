@@ -1,4 +1,6 @@
 class DOMRecorderService {
+    #DOMEventsRegistered = false;
+
     constructor(domMapper) {
         this.newActionHandler = null;
         this.mapper = domMapper;
@@ -10,7 +12,10 @@ class DOMRecorderService {
     }
 
     listen() {
+        if (this.#DOMEventsRegistered)
+            return;
         this.registerDOMEvents();
+        this.#DOMEventsRegistered = true;
     }
 
     registerDOMEvents() {
@@ -29,6 +34,10 @@ class DOMRecorderService {
     }
 
     handleClickEvent(event) {
+        if(event.target.closest(".no-listen")) {
+            return;
+        }
+
         this.saveAction(createActionFromModel({
             type: "click",
             signature: this.mapper.ExtractDOMElementSignature(event.target)
